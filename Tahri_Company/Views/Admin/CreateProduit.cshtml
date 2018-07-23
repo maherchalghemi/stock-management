@@ -1,0 +1,167 @@
+﻿@model Tahri_Company.Models.Produit
+
+@{
+    ViewBag.Title = "CreateProduit";
+    Layout = "~/Views/Shared/_Layout - EspaceAdmin.cshtml";
+}
+
+@section scripts {
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#Gratuite").change(function () {
+            if (this.checked) {
+                $('#formulex').show();
+                $('#formuley').show();
+
+            }
+           else {
+                //     alert("test");
+                $('#formulex').hide();
+                $('#formuley').hide();
+
+            }
+
+        })
+    });
+</script>
+    }
+
+
+<!-- page content -->
+
+
+<div class="right_col">
+
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                <h3>Produit</h3>
+            </div>
+
+            <div class="title_right">
+                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Rechercher...">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button">Lancer!</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Créer un nouveau produit</h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li>
+                                <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                            </li>
+                            <li>
+                                <a class="close-link"><i class="fa fa-close"></i></a>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    @using (Html.BeginForm("CreateProduit", "Admin", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="x_content">
+                            <br />
+
+                            <form class="form-horizontal form-label-left input_mask">
+
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                           
+                               
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                        Marque du produit
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        @Html.EnumDropDownListFor(model => model.Marque, htmlAttributes: new { id = "Type", @class = "form-control" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                        Nom du produit
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <input id="Libelle" name="Libelle" required="required" class="form-control col-md-7 col-xs-12" type="text">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                        Prix HT
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <input id="PrixHT" name="PrixHT" required="required" class="form-control col-md-7 col-xs-12" type="text">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                        Prix TTC 
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <input id="PrixTTC" name="PrixTTC" required="required" class="form-control col-md-7 col-xs-12" type="text">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" >
+                                       Voulez vous définir une formule de gratuité pour ce produit
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <input id="Gratuite" name="Gratuite" type="checkbox" checked>
+                                    </div>
+                                </div>
+
+                                <div id="formulex" class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                        Pour chaque 
+                                    </label>
+                                    <div class="col-md-1 col-sm-1 col-xs-2">
+                                        <input id="FormuleGrX" name="FormuleGrX" class="form-control col-md-7 col-xs-12" type="text">
+                                    </div>
+                                    <label class="control-label">
+                                        produits vendus
+                                    </label>
+                                </div>
+
+                                <div id="formuley" class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                        Nous avons
+                                    </label>
+                                    <div class="col-md-1 col-sm-1 col-xs-2">
+                                        <input id="FormuleGrY" name="FormuleGrY" class="form-control col-md-7 col-xs-12" type="text">
+                                    </div>
+                                    <label class="control-label ">
+                                        produits offerts.
+                                    </label>
+                                </div>
+
+
+                                <div class="ln_solid"></div>
+                            </form>
+
+                            <div class="form-group">
+                                <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+
+                                    <input type="submit" value="Créer" class="btn btn-success">
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- /page content -->

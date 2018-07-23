@@ -1,0 +1,76 @@
+﻿@model Tahri_Company.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Inscription";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<section class="awe-parallax register-page-demo">
+    <div class="awe-overlay"></div>
+    <div class="container">
+        <div class="register-page__content">
+            <div class="content-title">
+                <span>Vous êtes intéressé par nos produits</span>
+                <h2>Rejoignez nous !</h2>
+            </div>
+            @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                <form>
+                    @Html.ValidationSummary("", new { @class = "text-danger" })
+
+                    <h3 style="color:#294672">Détails du compte</h3>
+                    <div class="form-item">
+                        <label>Adresse Email</label>
+                        <input id="Email" name="Email" type="email" class="form-control">
+                    </div>
+
+
+                    <div class="form-item">
+                        <label>Mot de Passe</label>
+                        <input id="RegisterPassword" name="RegisterPassword" type="password" class="form-control">
+                    </div>
+
+                    <div class="form-item">
+                        <label>Confirmation</label>
+                        <input id="ConfirmPassword" name="ConfirmPassword" type="password" class="form-control">
+                    </div>
+                    <br clear="left">
+                    <h3 style="color:#294672">Détails Personnels</h3>
+                    <div class="form-item">
+                        <label>Nom</label>
+                        <input id="Nom" name="Nom" type="text" class="form-control">
+                    </div>
+                    <div class="form-item">
+                        <label>Prénom</label>
+                        <input id="Prenom" name="Prenom" type="text" class="form-control">
+                    </div>
+                    <div class="form-item">
+                        <label>Date de naissance</label>
+                        <input id="BirthDate" name="BirthDate" type="date" class="form-control">
+                    </div>
+                    <div class="form-item">
+                        <label>Téléphone</label>
+                        <input id="TelPerso" name="TelPerso" type="text" class="form-control" maxlength="13">
+                    </div>
+                    <div class="form-item">
+                        <label>Adresse</label>
+                        <input class="long" id="Adresse" name="Adresse" type="text">
+                    </div>
+
+
+
+
+
+
+                    <div class="form-actions">
+                        <input type="submit" value="Inscription">
+                    </div>
+                </form>
+            }
+            <div class="login-register-link">
+                Vous avez déjà un compte? <a href="~/Account/Login">Se Connecter</a>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,118 @@
+﻿@model Tahri_Company.Models.Commercial
+@{
+    ViewBag.Title = "Nouveau Membre";
+    Layout = "~/Views/Shared/_Layout - EspaceAdmin.cshtml";
+}
+
+<!-- page content -->
+<div class="right_col" role="main">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                <h3>Nouveau Membre</h3>
+            </div>
+
+            <div class="title_right">
+                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Rechercher...">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button">Go!</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Commercial</h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li>
+                                <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                            </li>
+                            <li>
+                                <a class="close-link"><i class="fa fa-close"></i></a>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <br />
+            
+                        <form class="form-horizontal form-label-left input_mask">
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                                <input id="Nom" name="Nom" type="text" class="form-control has-feedback-left" placeholder="Nom">
+                                <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                                <input id="Prenom" name="Prenom" type="text" class="form-control" placeholder="Prénom">
+                                <span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                                <input id="Email" name="Email" type="text" class="form-control has-feedback-left" placeholder="Email">
+                                <span class="fa fa-envelope form-control-feedback left" aria-hidden="true"></span>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                                <input id="Telephone" name="Telephone" type="text" class="form-control" placeholder="Téléphone">
+                                <span class="fa fa-phone form-control-feedback right" aria-hidden="true"></span>
+                            </div>
+                        </form>
+                        <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+                            <div class="form-group">
+                                <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Adresse</label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input id="Adresse" name="Adresse" class="form-control col-md-7 col-xs-12" type="text" >
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                    Date de naissance <span class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input id="DateNaissance" name="DateNaissance" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                                    Mot de Passe <span class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input type="password" id="Mdp" name="DateNaissance" required="required" class="form-control col-md-7 col-xs-12">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
+                                    Confirmation Mdp <span class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input type="password" id="ConfirmMdp" name="ConfirmMdp" required="required" class="form-control col-md-7 col-xs-12">
+                                </div>
+                            </div>
+                            <div class="ln_solid"></div>
+                            <div class="form-group">
+                                <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                                    <button type="submit" class="btn btn-primary">Annuler</button>
+                                    <button type="submit" class="btn btn-success" value="Confirm">Confirmer</button>
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    }
+</div>
+  
+<!-- /page content -->

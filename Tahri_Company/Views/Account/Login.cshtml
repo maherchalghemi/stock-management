@@ -1,0 +1,47 @@
+﻿@using Tahri_Company.Models
+@model LoginViewModel
+@{
+    ViewBag.Title = "Log in";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="awe-parallax login-page-demo">
+    <div class="awe-overlay"></div>
+    <div class="container">
+        <div class="login-register-page__content">
+            <div class="content-title">
+                <span>Bienvenue</span>
+                <h2>EXPLORER!</h2>
+            </div>
+            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                <form>
+
+                    <div class="form-item">
+                        @Html.ValidationSummary(true, "", new { @class = "login__signup", style = "font-family:Calibri; color:#E30404; text-align:center" })
+                        <label>Adresse mail</label>
+
+                        <input id="Email" name="Email" type="text">
+                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "login__signup", style = "font-family:Calibri; color:#ED0047" })
+                    </div>
+                    <div class="form-item">
+                        <label>Mot de Passe</label>
+                        <input id="Password" name="Password" type="password">
+                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "login__signup", style = "font-family:Calibri; color:#ED0047" })
+                    </div>
+
+                    <a href="ForgotPassword" class="forgot-password">Mot de Passe oublié</a>
+                    <div class="form-actions">
+                        <input type="submit" value="Se connecter">
+                    </div>
+
+                </form>
+            }
+            <div class="login-register-link">
+                Vous n'avez pas un compte? <a href="~/Account/Register">S'inscrire</a>
+            </div>
+
+        </div>
+    </div>
+</section>

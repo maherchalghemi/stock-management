@@ -1,0 +1,178 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout - EspaceAdmin.cshtml";
+}
+@section scripts{
+    <script src="~/Scripts/controllers/DepotController.js"></script>
+    <script src="~/Scripts/bootbox/bootbox.min.js"></script>
+    <script src="~/Scripts/plugins/jquery.twbsPagination.min.js"></script>
+    <script src="~/Scripts/plugins/mustache.min.js"></script>
+<script> 
+
+          $(document).ready(function () {
+              $('#btnAdd').click(function() {
+                  $('#FormDepotDiv').show();
+                  $('#btnAdd').hide();
+              });
+
+          });
+
+          $(document).ready(function () {
+              $('#close').click(function () {
+                  $('#FormDepotDiv').hide();
+                  $('#div1').hide();
+                  $('#div2').hide();
+                  $('#txtNom').val('');
+                  $('#txtAdresse').val('');
+                  $('#txtTel').val('');
+                  $('#txtNom').show();
+                  $('#lblNom').hide();
+
+                  $('#txtTel').show();
+                  $('#lblTel').hide();
+
+                  $('#txtAdresse').show();
+                  $('#lblAdresse').hide();
+                  
+                  $('#btnAdd').show();
+              });
+
+          });
+        
+          $(document).ready(function () {
+              $('#txtNom').on('keyup', function () {
+                  var nom = $('#txtNom').val();
+                  if (nom != '') {
+                      $('#div1').show();
+                      
+                  }
+                  else {
+                      $('#div1').hide();
+                      $('#div2').hide();
+                     
+                  }
+              });
+
+          });
+
+
+          function fncP() {
+          $('#popover').popover({
+              html: true,
+              title: function () {
+                  return $("#popover-head").html();
+              },
+              content: function () {
+                  return $("#popover-content").html();
+              }
+          });
+          }
+          $(document).ready(function () {
+              $('#closeP').click(function () {
+                  $('#popover').popover('hide');
+              });
+
+          });
+
+        </script>
+ }
+
+
+<div class="right_col" role="main">
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                <h3>Produits </h3>
+            </div>
+            <div class="title_right">
+                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search for...">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button">Lancer!</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>La liste des produits</h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li>
+                                <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                            </li>
+                            <li>
+                                <a class="close-link"><i class="fa fa-close"></i></a>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                       
+
+                        <div class="row">
+                            <div class="col-md-12">
+
+                                <div class="col-md-1">
+                                    <button id="btnAdd" class="btn btn-success pull-right">Ajouter  <i class="fa fa-plus"></i></button>
+                                    
+                                </div>
+                                <div id="FormDepotDiv" style="display:none;">
+                                @RenderPage("_FormDepot.cshtml")
+                                </div>
+                            </div>
+                        </div>
+                        <br /><br /><br />
+                        <table class="table table-striped table-bordered">
+                            <thead>
+                                <tr>
+                                    <td>Id</td>
+                                    <td>Nom </td>
+                                    <td>Adresse</td>
+                                    <td>Tel</td>
+
+
+
+                                    <td>Action</td>
+
+                                </tr>
+                            </thead>
+                            <tbody id="tblData"></tbody>
+                        </table>
+                        <div id="pagination" class="pagination">
+                        </div>
+                        <script id="data-template" type="x-tmpl-mustache">
+                            <tr>
+                                <td>{{DepotId}}</td>
+                                <td>{{Nom}}</td>
+                                <td>{{Adresse}}</td>
+                                <td>{{Tel}}</td>
+
+                                <td>
+                                    <button onclick="fncEdit(this)" id="btn-edit" class="btn btn-primary" data-id="{{DepotId}}">Edit</button>
+                                    <button onclick="fncDelelte(this)" id="btn-delete" class="btn btn-danger" data-id="{{DepotId}}">Delete</button>
+                                    <button onclick="fncStock(this)"  class="btn btn-success" data-id="{{DepotId}}">Stock</button>
+                                    <button onclick="fncP()" id="popover" class="btn btn-success">popover  <i class="fa fa-plus"></i></button>
+                                </td>
+                            </tr>
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@RenderPage("_DepotModal.cshtml")
+@RenderPage("_UpdateDepot.cshtml")
+@RenderPage("_Popover.cshtml")
+
+
+
+
+
+

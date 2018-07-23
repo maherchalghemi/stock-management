@@ -1,0 +1,46 @@
+﻿@{
+    ViewBag.Title = "EmailConfirmationFailed";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<section class="awe-parallax login-page-demo">
+    <div class="awe-overlay"></div>
+    <div class="container">
+        <div class="login-register-page__content">
+            <div class="content-title">
+                <span class="erreur">Votre compte n'est pas autorisé !</span>
+
+            </div>
+            @using (Html.BeginForm("SendConfirmationMail", "Account", FormMethod.Post, new { @class = "confirmform", @role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                <form>
+
+                    <div class="form-item">
+
+                        <h4>Votre Adresse Email n'est pas Vérifiée.</h4>
+
+
+                    </div>
+                    <div class="form-item">
+                        <label>Veuillez accéder à votre courriel pour avoir le lien de confirmation.</label>
+                    </div>
+
+                    <div class="form-item">
+                        <label>Si vous n'avez pas reçu l'Email de confirmation.</label>
+                    </div>
+                    <div class="form-actions">
+                        <input type="submit" value="Envoi de mail de confirmation">
+                    </div>
+
+                </form>
+            }
+            <div class="login-register-link">
+                Merci !
+            </div>
+
+        </div>
+    </div>
+</section>

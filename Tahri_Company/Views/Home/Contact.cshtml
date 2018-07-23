@@ -1,0 +1,57 @@
+﻿@model Tahri_Company.Models.Impression
+@{
+    ViewBag.Title = "Contact";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5">
+
+                <div class="contact-page__map">
+                    <img src="~/Content/WebSite/images/bg/mymap.png" alt="">
+                </div>
+            </div>
+
+            <div class="col-md-6 col-md-offset-1">
+                <div class="contact-page__form">
+                    <div class="title">
+                        <span>Nous voudrions savoir vos impréssions</span>
+                        <h2>Contactez Nous</h2>
+                    </div>
+                    <div class="descriptions">
+                        <p>Vous voudriez faire une remarque sur le site? Vous avez une demande particulière ? Veuillez nous transmettre votre message en remplissant les champs ci-dessous :  </p>
+                    </div>
+
+                    <form class="contact-form" action="Contact" method="post">
+                        @Html.AntiForgeryToken()
+                        <div class="form-item">
+                            <input type="text" placeholder="Votre Nom *" name="Nom">
+                            @Html.ValidationMessageFor(m => m.Nom, "", new { @class = "login__signup", style = "font-family:Calibri; color:#ED0047" })
+                        </div>
+                        <div class="form-item">
+                            <input type="email" placeholder="Votre Email *" name="Email">
+                            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "login__signup", style = "font-family:Calibri; color:#ED0047" })
+                        </div>
+                        <div class="form-item">
+                            <input class="long" type="text" placeholder="Titre *" name="Titre">
+                            @Html.ValidationMessageFor(m => m.Titre, "", new { @class = "login__signup", style = "font-family:Calibri; color:#ED0047" })
+                        </div>
+                        <div class="form-textarea-wrapper">
+                            <textarea name="message" placeholder="Votre message *"></textarea>
+                            @Html.ValidationMessageFor(m => m.Message, "", new { @class = "login__signup", style = "font-family:Calibri; color:#ED0047" })
+                        </div>
+                        <div class="form-actions">
+                            <input type="submit" value="Envoyer" class="submit-contact">
+                        </div>
+                        <div id="contact-content"></div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
